@@ -34,6 +34,20 @@ jobs:
           echo "$ASC_PRIVATE_KEY" > /tmp/AuthKey.p8
           chmod 600 /tmp/AuthKey.p8
 
+      - name: Download IPA from IPA_URL (optional)
+        env:
+          IPA_URL: ${{ secrets.IPA_URL }}
+        run: |
+          if [ -n "$IPA_URL" ]; then
+            mkdir -p client
+            echo "Downloading IPA from $IPA_URL"
+            curl -L --fail "$IPA_URL" -o client/upload.ipa
+            ls -lh client/upload.ipa || true
+            echo "IPA_PATH=client/upload.ipa" >> $GITHUB_ENV
+          else
+            echo "No IPA_URL provided; skipping download."
+          fi
+
       - name: Upload IPA to TestFlight (Fastlane)
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
