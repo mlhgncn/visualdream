@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+.expo/
+.expo-shared/
+.vscode/
+.DS_Store
+.env
+server/public/last.png
+npm-debug.log*
+.idea/
+/*.log
+coverage/
+.turbo/

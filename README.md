@@ -1,3 +1,55 @@
+# Ruya Gemini App
+
+Repo contains an Expo React Native client and a Node.js/Express server for generating images.
+
+Structure
+- `client/` — Expo React Native app (mobile)
+- `server/` — Node.js Express API
+
+Quick start (local)
+
+1. Install dependencies
+
+```bash
+# server
+cd server
+npm install
+
+# client
+cd ../client
+npm install
+```
+
+2. Run server
+
+```bash
+cd server
+npm start
+```
+
+3. Run client (Expo)
+
+```bash
+cd client
+npx expo start
+```
+
+Deployment notes
+- A `server/Dockerfile` and `server/render.yaml` are included for deploy to Render or other Docker hosts.
+- Do NOT commit secrets. Put `GEMINI_API_KEY` into your hosting provider's secret manager.
+- In production, use cloud storage (S3/GCS) for generated images instead of local `server/public`.
+
+Next steps to push to GitHub
+
+```bash
+git init
+git add .
+git commit -m "Initial commit: client + server + deploy configs"
+# add remote and push (replace URL)
+git remote add origin https://github.com/YOUR_USER/visualdream.git
+git branch -M main
+git push -u origin main
+```
 ruya-gemini-app
 
 Quick scaffold: Expo client + Express proxy to Gemini image API.
