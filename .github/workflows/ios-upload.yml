@@ -1,4 +1,5 @@
 name: Upload IPA to TestFlight
+name: Upload IPA to TestFlight
 
 on:
   workflow_dispatch:
@@ -11,14 +12,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: false
-          fetch-depth: 0
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1
+          ruby-version: '3.1'
 
       - name: Install dependencies
         run: |
@@ -30,25 +28,15 @@ jobs:
         run: |
           gem install cocoapods || true
 
-      - name: Install iOS pods
-        run: |
-          if [ -d "client/ios" ]; then
-            cd client/ios
-            pod install --repo-update || true
-            cd ../..
-          fi
-
       - name: Prepare App Store Connect API key
-        env:
-          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
         run: |
           if [ -z "$ASC_PRIVATE_KEY" ]; then echo "ASC_PRIVATE_KEY is empty"; exit 1; fi
           echo "$ASC_PRIVATE_KEY" > /tmp/AuthKey.p8
           chmod 600 /tmp/AuthKey.p8
+        env:
+          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
 
       - name: Download IPA from IPA_URL (optional)
-        env:
-          IPA_URL: ${{ secrets.IPA_URL }}
         run: |
           if [ -n "$IPA_URL" ]; then
             mkdir -p client
@@ -59,19 +47,56 @@ jobs:
           else
             echo "No IPA_URL provided; skipping download."
           fi
+        env:
+          IPA_URL: ${{ secrets.IPA_URL }}
 
       - name: Build + Upload (Fastlane)
+        run: |
+          set -e
+          LOG=fastlane.log
+          if [ -f upload.ipa ] || [ -f client/upload.ipa ]; then
+            echo "Found IPA in repo, setting IPA_PATH and running upload only"
+            if [ -f upload.ipa ]; then
+              echo "IPA_PATH=upload.ipa" >> $GITHUB_ENV
+            else
+              echo "IPA_PATH=client/upload.ipa" >> $GITHUB_ENV
+            fi
+            bundle exec fastlane ios ci_upload 2>&1 | tee "$LOG"; rc=${PIPESTATUS[0]}
+            echo "FASTLANE_RC=$rc" >> $GITHUB_ENV
+            if [ $rc -ne 0 ]; then exit $rc; fi
+          else
+            echo "No IPA found: running full build+upload (ci_build then ci_upload)"
+            bundle exec fastlane ios ci_build 2>&1 | tee "$LOG"; rc=${PIPESTATUS[0]}
+            if [ $rc -ne 0 ]; then exit $rc; fi
+            bundle exec fastlane ios ci_upload 2>&1 | tee -a "$LOG"; rc=${PIPESTATUS[0]}
+            if [ $rc -ne 0 ]; then exit $rc; fi
+          fi
+        shell: bash
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
-          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-          MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          SCHEME: ${{ secrets.SCHEME }}
-          WORKSPACE: ${{ secrets.WORKSPACE }}
-          PROJECT: ${{ secrets.PROJECT }}
+          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+
+      - name: Upload fastlane log
+        uses: actions/upload-artifact@v4
+        with:
+          name: fastlane-log
+          path: fastlane.log
+
+      - name: Print fastlane.log
+        if: always()
         run: |
-          # Build the app (uses match to fetch certificates), then upload
-          bundle exec fastlane ios ci_build
-          bundle exec fastlane ios ci_upload
+          echo "--- fastlane.log ---"
+          test -f fastlane.log && tail -n 400 fastlane.log || echo "fastlane.log not found"
+          uses: actions/upload-artifact@v3
+          with:
+            name: fastlane-logs
+            path: fastlane.log
+
+        - name: Print fastlane log
+          if: always()
+          run: |
+            echo "---- FASTLANE LOG BEGIN ----"
+            if [ -f fastlane.log ]; then cat fastlane.log; else echo "fastlane.log not found"; fi
+            echo "---- FASTLANE LOG END ----"
