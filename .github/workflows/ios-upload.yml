@@ -26,6 +26,18 @@ jobs:
           bundle config set path 'vendor/bundle' || true
           bundle install || gem install fastlane
 
+      - name: Install CocoaPods
+        run: |
+          gem install cocoapods || true
+
+      - name: Install iOS pods
+        run: |
+          if [ -d "client/ios" ]; then
+            cd client/ios
+            pod install --repo-update || true
+            cd ../..
+          fi
+
       - name: Prepare App Store Connect API key
         env:
           ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
@@ -48,11 +60,18 @@ jobs:
             echo "No IPA_URL provided; skipping download."
           fi
 
-      - name: Upload IPA to TestFlight (Fastlane)
+      - name: Build + Upload (Fastlane)
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          SCHEME: ${{ secrets.SCHEME }}
+          WORKSPACE: ${{ secrets.WORKSPACE }}
+          PROJECT: ${{ secrets.PROJECT }}
         run: |
+          # Build the app (uses match to fetch certificates), then upload
+          bundle exec fastlane ios ci_build
           bundle exec fastlane ios ci_upload

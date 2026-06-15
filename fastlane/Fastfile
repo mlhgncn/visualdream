@@ -26,4 +26,47 @@ platform :ios do
       force: true
     )
   end
+
+  desc "CI: build archive using match and gym"
+  lane :ci_build do
+    UI.message("Starting ci_build lane: fetching certificates with match")
+
+    match_git = ENV['MATCH_GIT_URL']
+    match_password = ENV['MATCH_PASSWORD']
+    if match_git.nil? || match_git.strip.empty?
+      UI.user_error!("MATCH_GIT_URL not set. Provide the match git repo URL in MATCH_GIT_URL secret.")
+    end
+
+    ENV['MATCH_PASSWORD'] = match_password if match_password
+
+    match(type: "appstore", readonly: true, git_url: match_git)
+
+    scheme = ENV['SCHEME']
+    if scheme.nil? || scheme.strip.empty?
+      UI.user_error!("SCHEME not set. Set the Xcode scheme name in ENV['SCHEME'].")
+    end
+
+    ipa = nil
+    if ENV['WORKSPACE'] && !ENV['WORKSPACE'].strip.empty?
+      ipa = gym(
+        workspace: ENV['WORKSPACE'],
+        scheme: scheme,
+        export_method: 'app-store',
+        output_directory: 'client/build',
+        output_name: 'app.ipa'
+      )
+    else
+      project_path = ENV['PROJECT'] || "client/ios/#{scheme}.xcodeproj"
+      ipa = gym(
+        project: project_path,
+        scheme: scheme,
+        export_method: 'app-store',
+        output_directory: 'client/build',
+        output_name: 'app.ipa'
+      )
+    end
+
+    ENV['IPA_PATH'] = ipa
+    UI.message("Built IPA at #{ipa}")
+  end
 end
