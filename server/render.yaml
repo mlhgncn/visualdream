@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ruya-gemini-server
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: starter
+    region: oregon
+    autoDeploy: true
+    buildCommand: ""
+    startCommand: "npm start"
+    envVars:
+      - key: PORT
+        value: "3001"
+    secretEnvVars:
+      - key: GEMINI_API_KEY
+      - key: GEMINI_IMAGE_URL

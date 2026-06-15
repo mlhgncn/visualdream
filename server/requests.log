@@ -1,0 +1,45 @@
+2026-06-14T16:27:05.300Z - 192.168.1.12 - prompt: Araba
+2026-06-14T16:27:05.300Z - returning direct image https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg
+2026-06-14T16:27:15.277Z - 192.168.1.12 - prompt: Araba
+2026-06-14T16:27:15.277Z - returning direct image https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg
+2026-06-14T16:29:10.821Z - returning mock imageDataUrl
+2026-06-14T16:29:23.831Z - returning mock imageDataUrl
+2026-06-14T16:29:42.194Z - returning mock imageDataUrl
+2026-06-14T16:30:03.924Z - returning mock imageUrl https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg
+2026-06-14T16:30:18.882Z - returning mock imageUrl https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg
+2026-06-14T16:31:07.091Z - fetching mock image https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg
+2026-06-14T16:31:07.091Z - mock fetch failed Request failed with status code 403
+2026-06-14T16:33:16.284Z - 192.168.1.12 - prompt: Araba
+2026-06-14T16:33:16.284Z - returning direct image https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg
+2026-06-14T16:33:16.284Z - response: {"ok":true,"imageUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"}
+2026-06-14T16:33:57.119Z - 192.168.1.21 - prompt: fetch test
+2026-06-14T16:33:57.119Z - returning direct image https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg
+2026-06-14T16:33:57.119Z - response: {"ok":true,"imageUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"}
+2026-06-14T16:34:29.269Z - 192.168.1.21 - prompt: test placeholder
+2026-06-14T16:34:29.269Z - returning direct image https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg
+2026-06-14T16:34:29.269Z - response: {"ok":true,"imageUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"}
+2026-06-14T16:34:57.589Z - fetching mock image https://via.placeholder.com/600.png
+2026-06-14T16:34:57.589Z - mock fetch failed Client network socket disconnected before secure TLS connection was established
+2026-06-14T16:34:57.589Z - response: {"ok":true,"imageUrl":"https://via.placeholder.com/600.png"}
+2026-06-14T16:37:14.655Z - returning embedded mock imageDataUrl size:404
+2026-06-14T16:37:14.655Z - response: {"ok":true,"imageDataUrl":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAAD+3b9eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3dQW7rMBCG4Z8K//+3bYQJAQm3s2g7s2LQ1s1kQ2g0m9ZK6Yk3lB4GQAAAAAAAAAAAAAAAMBv3W3a9fV3e7s3t7Yv9v1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1PZ/9sZ0A3gLw8QAAAABJRU5ErkJggg=="}
+2026-06-14T16:40:01.003Z - returning embedded mock imageDataUrl size:404
+2026-06-14T16:40:01.003Z - wrote public/last.png and returning imageUrlLocal http://192.168.1.21:3001/public/last.png
+2026-06-14T16:40:01.003Z - response: {"ok":true,"imageDataUrl":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAAD+3b9eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3dQW7rMBCG4Z8K//+3bYQJAQm3s2g7s2LQ1s1kQ2g0m9ZK6Yk3lB4GQAAAAAAAAAAAAAAAMBv3W3a9fV3e7s3t7Yv9v1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1PZ/9sZ0A3gLw8QAAAABJRU5ErkJggg==","imageUrl":"http://192.168.1.21:3001/public/last.png"}
+2026-06-14T16:43:18.696Z - returning embedded mock imageDataUrl size:404
+2026-06-14T16:43:18.696Z - wrote public/last.png and returning imageUrlLocal http://192.168.1.21:3001/public/last.png
+2026-06-14T16:43:18.696Z - response: {"ok":true,"imageDataUrl":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAAD+3b9eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3dQW7rMBCG4Z8K//+3bYQJAQm3s2g7s2LQ1s1kQ2g0m9ZK6Yk3lB4GQAAAAAAAAAAAAAAAMBv3W3a9fV3e7s3t7Yv9v1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1PZ/9sZ0A3gLw8QAAAABJRU5ErkJggg==","imageUrl":"http://192.168.1.21:3001/public/last.png"}
+2026-06-14T16:44:59.981Z - returning embedded mock imageDataUrl size:404
+2026-06-14T16:44:59.981Z - wrote public/last.png and returning imageUrlLocal http://192.168.1.21:3001/public/last.png
+2026-06-14T16:44:59.981Z - response: {"ok":true,"imageDataUrl":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAAD+3b9eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3dQW7rMBCG4Z8K//+3bYQJAQm3s2g7s2LQ1s1kQ2g0m9ZK6Yk3lB4GQAAAAAAAAAAAAAAAMBv3W3a9fV3e7s3t7Yv9v1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1PZ/9sZ0A3gLw8QAAAABJRU5ErkJggg==","imageUrl":"http://192.168.1.21:3001/public/last.png"}
+2026-06-14T17:06:22.940Z - returning embedded mock imageDataUrl size:404
+2026-06-14T17:06:22.940Z - wrote public/last.png and returning imageUrlLocal http://192.168.1.21:3001/public/last.png
+2026-06-14T17:06:22.940Z - response: {"ok":true,"imageDataUrl":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAAD+3b9eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3dQW7rMBCG4Z8K//+3bYQJAQm3s2g7s2LQ1s1kQ2g0m9ZK6Yk3lB4GQAAAAAAAAAAAAAAAMBv3W3a9fV3e7s3t7Yv9v1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1PZ/9sZ0A3gLw8QAAAABJRU5ErkJggg==","imageUrl":"http://192.168.1.21:3001/public/last.png"}
+2026-06-15T17:29:13.526Z - returning embedded mock imageDataUrl size:404
+2026-06-15T17:29:13.526Z - wrote public/last.png and returning imageUrlLocal http://127.0.0.1:3001/public/last.png
+2026-06-15T17:29:13.526Z - response: {"ok":true,"imageDataUrl":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAAD+3b9eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3dQW7rMBCG4Z8K//+3bYQJAQm3s2g7s2LQ1s1kQ2g0m9ZK6Yk3lB4GQAAAAAAAAAAAAAAAMBv3W3a9fV3e7s3t7Yv9v1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1PZ/9sZ0A3gLw8QAAAABJRU5ErkJggg==","imageUrl":"http://127.0.0.1:3001/public/last.png"}
+2026-06-15T17:29:13.545Z - returning embedded mock imageDataUrl size:404
+2026-06-15T17:29:13.545Z - wrote public/last.png and returning imageUrlLocal http://192.168.1.25:3001/public/last.png
+2026-06-15T17:29:13.545Z - response: {"ok":true,"imageDataUrl":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAIAAAD+3b9eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKUlEQVR4nO3dQW7rMBCG4Z8K//+3bYQJAQm3s2g7s2LQ1s1kQ2g0m9ZK6Yk3lB4GQAAAAAAAAAAAAAAAMBv3W3a9fV3e7s3t7Yv9v1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1Pb/1fU9v9X1PZ/9sZ0A3gLw8QAAAABJRU5ErkJggg==","imageUrl":"http://192.168.1.25:3001/public/last.png"}
+2026-06-15T17:32:51.597Z - REQ GET /health from 192.168.1.25
+2026-06-15T17:32:51.646Z - REQ GET /favicon.ico from 192.168.1.25
