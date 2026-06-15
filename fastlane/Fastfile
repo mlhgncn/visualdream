@@ -9,8 +9,19 @@ platform :ios do
       key_content: ENV['ASC_PRIVATE_KEY']
     )
 
+    # Allow overriding via ENV or auto-detect an .ipa in the repo
+    ipa_path = ENV['IPA_PATH']
+    if ipa_path.nil? || ipa_path.strip.empty?
+      possible = Dir.glob("**/*.ipa").reject { |p| p.include?("Pods") }
+      ipa_path = possible.first
+    end
+
+    unless ipa_path && File.exist?(ipa_path)
+      UI.user_error!("IPA not found. Set ENV['IPA_PATH'] or ensure an .ipa exists in the repo")
+    end
+
     upload_to_testflight(
-      ipa: "client/upload.ipa",
+      ipa: ipa_path,
       skip_waiting_for_build_processing: false,
       force: true
     )
